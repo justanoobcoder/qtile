@@ -36,6 +36,7 @@ bar = bar.Bar([
     widget.CPU(
         format = ' {freq_current}GHz {load_percent}%',
         mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('st -e htop')},
+        update_interval = 2,
         background = bg1,
         foreground = fg_dark
     ),
@@ -44,7 +45,7 @@ bar = bar.Bar([
     widget.GenPollText(
         func = lambda: subprocess.getoutput('printf \" $(free -m | awk \'/Mem/ { printf \"%.2fGiB\", ($3 + $5)/1024}\')\"'),
         mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('st -e htop')},
-        update_interval = 1,
+        update_interval = 2,
         background = bg2,
         foreground = fg_dark,
     ),
