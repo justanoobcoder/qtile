@@ -2,7 +2,7 @@ import subprocess
 from libqtile import bar, qtile, widget
 
 from unicodes import right_half_circle, left_half_circle
-from customwidget import battery, clock, volume
+from customwidget import battery, clock, volume, timer
 
 fg_dark =       '#191724'
 fg_light =      '#e0def4'
@@ -17,6 +17,7 @@ bg3 =           '#d7907b'
 bg4 =           '#BBDEF0'
 bg5 =           '#24A777'
 bg6 =           '#F4D35E'
+bg7 =           '#50C9CE'
 
 bar = bar.Bar([
     widget.GroupBox(
@@ -32,7 +33,15 @@ bar = bar.Bar([
     right_half_circle(gb_bg, bg0),
     widget.Spacer(background = bg0),
 
-    left_half_circle(bg1, bg0),
+    left_half_circle(bg7, bg0),
+    timer.CustomTimer(
+        duration_cmd = 'printf | rofi -dmenu -p "Duration:" 2> /dev/null',
+        timeout_cmd = 'notify-send "Timeout!"',
+        background = bg7,
+        foreground = fg_dark
+    ),
+
+    left_half_circle(bg1, bg7),
     widget.CPU(
         format = ' {freq_current}GHz {load_percent}%',
         mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('st -e htop')},
