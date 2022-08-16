@@ -16,7 +16,7 @@ bg2 =           '#ecc8ae'
 bg3 =           '#d7907b'
 bg4 =           '#BBDEF0'
 bg5 =           '#24A777'
-bg6 =           '#F4D35E'
+bg6 =           '#961D40'
 bg7 =           '#50C9CE'
 
 bar = bar.Bar([
